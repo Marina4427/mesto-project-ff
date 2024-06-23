@@ -20,3 +20,8 @@
     margin-right: 0;
   }
 }
+
+.profile__image:hover {
+  cursor: url('../../../images/edit-icon.svg'), auto;
+  opacity: 0.8;
+}
