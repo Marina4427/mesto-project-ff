@@ -1,2 +1,1 @@
-https://github.com/Marina4427/mesto-project-ff.git
-
+https://marina4427.github.io/mesto-project-ff/
