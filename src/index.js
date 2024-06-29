@@ -29,13 +29,15 @@ const popupImageCaption = popupImage.querySelector(".popup__caption");
 const popupImagePicture = popupImage.querySelector(".popup__image");
 
 const formCardElement = document.forms["new-place"];
-const buttonSave = formCardElement.querySelector(".popup__button");
+const buttonSavePlace = formCardElement.querySelector(".popup__button");
 const nameInput = document.querySelector(".popup__input_type_name");
 const jobInput = document.querySelector(".popup__input_type_description");
 
 const formPersonElement = document.forms["edit-profile"];
 const cardNameInput = document.querySelector(".popup__input_type_card-name");
 const cardUrlInput = document.querySelector(".popup__input_type_url");
+const buttonSaveProfile = formPersonElement.querySelector(".popup__button");
+
 
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
@@ -105,8 +107,9 @@ const updateProfileData = (data) => {
 //ф-ия смены имени и описания профиля
 function changeProfileFormSubmit(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  const buttonSave = formPersonElement.querySelector(".popup__button");
-  loading(buttonSave, true);
+  const currentName = profileTitle.textContent;
+  const currentAbout = profileDescription.textContent
+  loading(buttonSaveProfile, true);
   const name = (profileTitle.textContent = nameInput.value);
   const about = (profileDescription.textContent = jobInput.value);
   patchUser(name, about)
@@ -118,16 +121,18 @@ function changeProfileFormSubmit(evt) {
     })
     .catch((err) => {
       console.error("Ошибка при обновлении профиля:", err);
+      profileTitle.textContent = currentName;
+      profileDescription.textContent = currentAbout;
     })
     .finally(() => {
-      loading(buttonSave, false);
+      loading(buttonSaveProfile, false);
     });
 }
 
 //ф-я добавления новой карточки по ссылке
 function addCardFormSubmit(evt) {
   evt.preventDefault();
-  loading(buttonSave, true);
+  loading(buttonSavePlace, true);
   const cardNameValue = cardNameInput.value;
   const cardUrlValue = cardUrlInput.value;
   //отправить на сервер и вернуть данные карточки
@@ -140,7 +145,7 @@ function addCardFormSubmit(evt) {
       console.error("Ошибка при добавлении карточки:", err);
     })
     .finally(() => {
-      loading(buttonSave, false);
+      loading(buttonSavePlace, false);
     });
 }
 

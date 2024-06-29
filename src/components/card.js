@@ -40,7 +40,7 @@ export function createCard(item, callbacksObject, userId) {
   const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitle = cardElement.querySelector(".card__title");
-  let likeCounter = cardElement.querySelector(".card__like-counter");
+  const likeCounter = cardElement.querySelector(".card__like-counter");
   const cardDeleteButton = cardElement.querySelector(".card__delete-button");
   const likeButton = cardElement.querySelector(".card__like-button");
 
