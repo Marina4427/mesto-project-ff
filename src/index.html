@@ -10,14 +10,14 @@
 <body class="page">
 <div class="page__content">
   <header class="header page__section">
-    <img src="<%=require("./images/logo.svg")%>"     
-      alt="Логотип проекта масто" 
+    <img src="<%=require("./images/logo.svg")%>"
+      alt="Логотип проекта масто"
       class="logo header__logo">
   </header>
   <main class="content">
     <section class="profile page__section">
-      <div class="profile__image" 
-        style="background-image: url('<%= require('./images/avatar.jpg') %>');">    
+      <div class="profile__image"
+        style="background-image: url('<%= require('./images/avatar.jpg') %>');">
       </div>
       <div class="profile__info">
         <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -36,28 +36,28 @@
       © 2021 Mesto Russia
     </p>
   </footer>
-  <div class="popup popup_type_edit">
+  <div class="popup popup_is-animated popup_type_edit">
     <div class="popup__content">
       <button type="button" class="popup__close"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
       <form class="popup__form" name="edit-profile" novalidate>
-        <input type="text" 
-        name="name" 
+        <input type="text"
+        name="name"
         id="name_id"
-        class="popup__input popup__input_type_name" 
-        placeholder="Имя" 
-        minlength="2" 
-        maxlength="40" 
+        class="popup__input popup__input_type_name"
+        placeholder="Имя"
+        minlength="2"
+        maxlength="40"
         pattern="^[a-zA-Zа-яА-ЯЁё \-]+$"
         data-error-message="Разрешены символы латиницы,кириллицы, знаки дефиса и пробелы."
         required>
         <span class="name_id-error"></span>
-        <input type="text" 
+        <input type="text"
         name="description"
-        id="description_id" 
-        class="popup__input popup__input_type_description" 
+        id="description_id"
+        class="popup__input popup__input_type_description"
         placeholder="Занятие"
-        minlength="2" 
+        minlength="2"
         maxlength="200"
         pattern="^[a-zA-Zа-яА-ЯЁё \-]+$"
         data-error-message="Разрешены символы латиницы,кириллицы, знаки дефиса и пробелы."
@@ -67,34 +67,34 @@
       </form>
     </div>
   </div>
-  <div class="popup popup_type_new-card">
+  <div class="popup popup_is-animated popup_type_new-card">
     <div class="popup__content">
       <button type="button" class="popup__close"></button>
       <h3 class="popup__title">Новое место</h3>
       <form class="popup__form" name="new-place" novalidate>
-        <input type="text" 
-        name="place-name" 
+        <input type="text"
+        name="place-name"
         id="place-name_id"
-        minlength="2" 
+        minlength="2"
         maxlength="30"
-        class="popup__input popup__input_type_card-name" 
+        class="popup__input popup__input_type_card-name"
         placeholder="Название"
         pattern="^[a-zA-Zа-яА-ЯЁё \-]+$"
         data-error-message="Разрешены символы латиницы,кириллицы, знаки дефиса и пробелы."
         required>
         <span class="place-name_id-error"></span>
-        <input type="url" 
-        name="link" 
+        <input type="url"
+        name="link"
         id="link_id"
-        class="popup__input popup__input_type_url" 
-        placeholder="Ссылка на картинку" 
+        class="popup__input popup__input_type_url"
+        placeholder="Ссылка на картинку"
         required>
         <span class="link_id-error"></span>
         <button type="submit" class="button popup__button">Сохранить</button>
       </form>
     </div>
   </div>
-  <div class="popup popup_type_image">
+  <div class="popup popup_is-animated popup_type_image">
     <div class="popup__content popup__content_content_image">
       <button type="button" class="popup__close"></button>
       <img src="" alt="" class="popup__image">
@@ -106,7 +106,7 @@
 
 
 
-<div class="popup popup_type_delete-card">
+<div class="popup popup_is-animated popup_type_delete-card">
   <div class="popup__content popup__content_content_delete-card">
     <button type="button" class="popup__close"></button>
     <h3 class="popup__title">Вы уверены?</h3>
@@ -116,25 +116,25 @@
   </div>
 </div>
 
-<div class="popup popup_type_new-avatar">
+<div class="popup popup_is-animated popup_type_new-avatar">
   <div class="popup__content">
     <button type="button" class="popup__close"></button>
     <h3 class="popup__title">Обновить аватар</h3>
     <form class="popup__form" name="new-avatar" novalidate>
-      <input type="url" 
-      name="link_avatar" 
+      <input type="url"
+      name="link_avatar"
       id="link_avatar_id"
-      class="popup__input popup__input_type_url" 
-      placeholder="Ссылка на картинку" 
+      class="popup__input popup__input_type_url"
+      placeholder="Ссылка на картинку"
       required>
       <span class="link_avatar_id-error"></span>
       <button type="submit" class="button popup__button">Сохранить</button>
     </form>
   </div>
 </div>
-<div class="popup popup_type_avatar">
+<div class="popup popup_is-animated popup_type_avatar">
   <div class="popup__content popup__content_content_image">
-    <button type="button" class="popup__close"></button>
+    <button type="submit" class="popup__close"></button>
     <img src="" alt="" class="popup__image">
     <p class="popup__caption"></p>
   </div>

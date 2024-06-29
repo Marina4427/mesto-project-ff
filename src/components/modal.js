@@ -24,7 +24,7 @@ function closePopup(element) {
   popupCloseButton.removeEventListener("click", closePopupByCross);
 }
 function openPopup(element) {
-  element.classList.add("popup_is-opened", "popup_is-animated");
+  element.classList.add("popup_is-opened");
   document.addEventListener("keydown", closePopupByEscape);
   document.addEventListener("click", closePopupOverlay);
   const popupCloseButton = element.querySelector(".popup__close");

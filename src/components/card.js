@@ -1,6 +1,10 @@
-import { deleteLikeCard, addLikeCard } from "./api";
-
-export function putLike (likeButton, item, likeCounter) {
+export function putLike(
+  likeButton,
+  item,
+  likeCounter,
+  deleteLikeCard,
+  addLikeCard
+) {
   if (likeButton.classList.contains("card__like-button_is-active")) {
     // Пользователю уже понравилась карточка, поэтому выполните операцию "не нравится".
     deleteLikeCard(item._id)
@@ -13,27 +17,32 @@ export function putLike (likeButton, item, likeCounter) {
       });
   } else {
     addLikeCard(item._id)
-    .then((res) => {
-      likeButton.classList.add("card__like-button_is-active");
-      likeCounter.textContent = res.likes.length;
-    })
-    .catch((err) => {
-      console.error("Произошла ошибка при добавлении лайка:", err);
-    });
+      .then((res) => {
+        likeButton.classList.add("card__like-button_is-active");
+        likeCounter.textContent = res.likes.length;
+      })
+      .catch((err) => {
+        console.error("Произошла ошибка при добавлении лайка:", err);
+      });
   }
 }
 
 export function createCard(item, callbacksObject, userId) {
-  const { deleteCardCallback, openImageCallback, likeCallback } =
-    callbacksObject;
+  const {
+    openImageCallback,
+    likeCallback,
+    openDeletePopupCallBack,
+    deleteLikeCard,
+    addLikeCard,
+  } = callbacksObject;
 
   const cardTemplate = document.querySelector("#card-template").content;
   const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitle = cardElement.querySelector(".card__title");
-  let likeCounter = cardElement.querySelector('.card__like-counter');
+  let likeCounter = cardElement.querySelector(".card__like-counter");
   const cardDeleteButton = cardElement.querySelector(".card__delete-button");
-  const likeButton = cardElement.querySelector('.card__like-button');
+  const likeButton = cardElement.querySelector(".card__like-button");
 
   cardTitle.textContent = item.name;
   cardImage.src = item.link;
@@ -43,19 +52,22 @@ export function createCard(item, callbacksObject, userId) {
   let isLike = item.likes.some((likeItem) => likeItem._id === userId);
 
   if (isLike) {
-    likeButton.classList.add('card__like-button_is-active');
-  } else {likeButton.classList.remove('card__like-button_is-active');}
+    likeButton.classList.add("card__like-button_is-active");
+  } else {
+    likeButton.classList.remove("card__like-button_is-active");
+  }
 
   // basket
-  cardDeleteButton.style.display = (item.owner._id === userId) ? "block" : "none";
+  cardDeleteButton.style.display = item.owner._id === userId ? "block" : "none";
 
   // @todo: слушатель удаления карточки
   cardDeleteButton.addEventListener("click", () => {
-    deleteCardCallback(cardElement, item._id);
+    openDeletePopupCallBack(cardElement, item._id);
   });
+
   //слушатель лайка
   likeButton.addEventListener("click", () => {
-    likeCallback(likeButton, item, likeCounter, userId);
+    likeCallback(likeButton, item, likeCounter, deleteLikeCard, addLikeCard);
   });
 
   // Слушатель добавления картинки
