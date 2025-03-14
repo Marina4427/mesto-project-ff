@@ -2,7 +2,7 @@
 
 Ссылки:
 - Репозиторий проекта: https://github.com/Marina4427/mesto-project-ff.git
-- Проект опубликованный в gh-pages: https://marina4427.github.io/mesto-project-ff/
+
 
 
 ## Описание проекта
